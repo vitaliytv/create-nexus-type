@@ -1,35 +1,35 @@
-const { objectType, extendType } = require('nexus')
+const { objectType, extendType } = require("@nexus/schema");
 
 export const Post = objectType({
-  name: 'Post',
+  name: "Post",
   definition(t) {
-    t.model.id()
-    t.model.author()
+    t.model.id();
+    t.model.author();
   },
-})
+});
 
 const postQuery = extendType({
-  type: 'Query',
+  type: "Query",
   definition(t) {
-    t.crud.post()
-    t.crud.posts({ filtering: true, ordering: true })
+    t.crud.post();
+    t.crud.posts({ filtering: true, ordering: true });
   },
-})
+});
 
 const postMutation = extendType({
-  type: 'Mutation',
+  type: "Mutation",
   definition(t) {
-    t.crud.createOnePost()
-    t.crud.updateOnePost()
-    t.crud.upsertOnePost()
-    t.crud.deleteOnePost()
+    t.crud.createOnePost();
+    t.crud.updateOnePost();
+    t.crud.upsertOnePost();
+    t.crud.deleteOnePost();
 
-    t.crud.updateManyPost()
-    t.crud.deleteManyPost()
+    t.crud.updateManyPost();
+    t.crud.deleteManyPost();
   },
-})
+});
 module.exports = {
-	Post,
-	postQuery,
-	postMutation,
-}
+  Post,
+  postQuery,
+  postMutation,
+};

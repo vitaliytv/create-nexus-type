@@ -56,36 +56,36 @@ OutPut
 
 ```ts
 // User.ts
-import { objectType } from 'nexus';
+import { objectType } from "@nexus/schema";
 
 export const User = objectType({
-  name: 'User',
+  name: "User",
   definition(t) {
     t.model.id();
     t.model.email();
     t.model.birthDate();
     t.model.posts();
-  }
+  },
 });
 ```
 
 ```ts
 // Post.ts
-import { objectType } from 'nexus';
+import { objectType } from "@nexus/schema";
 
 export const Post = objectType({
-  name: 'Post',
+  name: "Post",
   definition(t) {
     t.model.id();
     t.model.author();
-  }
+  },
 });
 ```
 
 ```ts
 // index.ts
-export * from './User';
-export * from './Post';
+export * from "./User";
+export * from "./Post";
 ```
 
 ## Create Queries and Mutations
@@ -99,28 +99,28 @@ npx cnt --mq -f -o
 OutPut
 
 ```ts
-import { objectType, extendType } from 'nexus';
+import { objectType, extendType } from "@nexus/schema";
 
 export const User = objectType({
-  name: 'User',
+  name: "User",
   definition(t) {
     t.model.id();
     t.model.email();
     t.model.birthDate();
     t.model.posts();
-  }
+  },
 });
 
 export const userQuery = extendType({
-  type: 'Query',
+  type: "Query",
   definition(t) {
     t.crud.user();
     t.crud.users({ filtering: true, ordering: true });
-  }
+  },
 });
 
 export const userMutation = extendType({
-  type: 'Mutation',
+  type: "Mutation",
   definition(t) {
     t.crud.createOneUser();
     t.crud.updateOneUser();
@@ -129,7 +129,7 @@ export const userMutation = extendType({
 
     t.crud.updateManyUser();
     t.crud.deleteManyUser();
-  }
+  },
 });
 ```
 
@@ -197,8 +197,8 @@ export interface Post {
 }
 
 enum UserRole {
-  USER = 'USER',
-  ADMIN = 'ADMIN'
+  USER = "USER",
+  ADMIN = "ADMIN",
 }
 ```
 
